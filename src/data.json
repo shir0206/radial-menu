@@ -1,0 +1,42 @@
+{
+  "data": {
+    "type": 0,
+    "label": "folder0_0",
+    "children": [
+      {
+        "type": 0,
+        "label": "folder0_0_0"
+      },
+      {
+        "type": 0,
+        "label": "folder0_0_1"
+      },
+      {
+        "type": 0,
+        "label": "folder0_0_2"
+      },
+      {
+        "type": 0,
+        "label": "folder0_0_3"
+      },
+      {
+        "type": 0,
+        "label": "folder0_0_4"
+      },
+      {
+        "type": 0,
+        "label": "folder0_0_5"
+      },
+      {
+        "type": 1,
+        "label": "picture0_0_6",
+        "url": "http://thecatapi.com/api/images/get?image_id=999"
+      },
+      {
+        "type": 1,
+        "label": "picture0_0_7",
+        "url": "http://thecatapi.com/api/images/get?image_id=811"
+      }
+    ]
+  }
+}
