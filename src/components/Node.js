@@ -32,19 +32,24 @@ export const Node = (props) => {
     }
   });
 
-  const translateposition = (level, nodesInLevel, currNode) => {
-    let r = (level + 1) * 20;
+  const calcPosition = (level, nodesInLevel, currNode) => {
+    let r = (level + 1) * 10;
     let n = nodesInLevel;
     let i = currNode;
+    console.log(level);
+    let a = (90 / (n + 1)) * i;
+    // let a = 270 + (90 / (n + 1)) * i;
+    // let a = 180 + (90 / (n + 1)) * i;
 
-    let a = 270 + (90 / (n + 1)) * i;
-    let x = r * Math.cos(a);
-    let y = r * Math.sin(a);
-    let style = "translate(" + x + "px, " + y + "px)";
+    let x = Math.abs(r * Math.sin(a));
+    let y = Math.abs(r * Math.cos(a));
+    let style = "translate(" + x + "vw, " + y + "vw)";
     return style;
   };
 
   const level = currNodeLabel.split("/").length;
+  console.log(currNodeLabel);
+
   const nodesInLevel = currNodeChildren.length;
   const currNode = props.index;
   return (
@@ -53,7 +58,7 @@ export const Node = (props) => {
         className={
           props.type === 0 ? (click ? "clicked-folder" : "folder") : "picture"
         }
-        style={{ transform: translateposition(level, nodesInLevel, currNode) }}
+        style={{ transform: calcPosition(level, nodesInLevel, currNode) }}
         onClick={getData}
       >
         {level}
