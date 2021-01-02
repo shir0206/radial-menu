@@ -32,22 +32,39 @@ export const Node = (props) => {
     }
   });
 
+  const translateposition = (level, nodesInLevel, currNode) => {
+    let r = (level + 1) * 20;
+    let n = nodesInLevel;
+    let i = currNode;
+
+    let a = 270 + (90 / (n + 1)) * i;
+    let x = r * Math.cos(a);
+    let y = r * Math.sin(a);
+    let style = "translate(" + x + "px, " + y + "px)";
+    return style;
+  };
+
+  const level = currNodeLabel.split("/").length;
+  const nodesInLevel = currNodeChildren.length;
+  const currNode = props.index;
   return (
     <>
       <button
         className={
           props.type === 0 ? (click ? "clicked-folder" : "folder") : "picture"
         }
+        style={{ transform: translateposition(level, nodesInLevel, currNode) }}
         onClick={getData}
       >
-        {props.label}
+        {level}
       </button>
       {click && (
         <ul className="nodes">
           {currNodeChildren.children &&
-            currNodeChildren.children.map((nodeChild) => (
+            currNodeChildren.children.map((nodeChild, index) => (
               <Node
                 key={nodeChild.label}
+                index={index}
                 label={currNodeLabel + "/" + nodeChild.label.toString()}
                 type={nodeChild.type}
               ></Node>
