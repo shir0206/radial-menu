@@ -5,10 +5,10 @@ import "./Node.css";
 
 export const Node = (props) => {
   const [click, setClick] = useState(false);
+  const [clickedChildren, setClickedChildren] = useState([]);
   const [currNodeType, setCurrNodeType] = useState(props.type);
   const [currNodeLabel, setCurrNodeLabel] = useState(props.label);
   const [currNodeChildren, setCurrNodeChildren] = useState([]);
-  const [requestError, setRequestError] = useState();
 
   const baseUrl = "http://18.203.83.17/public/explorePictures?path=";
   const receiptUrl = props.label ? baseUrl + "/" + props.label : baseUrl;
@@ -16,18 +16,32 @@ export const Node = (props) => {
 
   const getData = useCallback(async () => {
     try {
+      // Get result from server
       const result = await axios.get(`${receiptUrl}`, {
         json: true,
         headers: { "X-TOKEN": clientToken },
       });
       console.log("inside try");
 
+      // Get next children nodes to the state
       const resultData = result.data.data;
       setCurrNodeChildren(resultData);
+      console.log(resultData);
+
+      // Update that the current node is clicked
       setClick(true);
-      console.log("inside try=", resultData);
+
+      // Update the parent's "clicks" array:
+      // Turn on the flag that the current node is clicked
+      // Turn off the flags for all the other siblings.
+      // Such that if the sibling's menu was open it would close.
+      props.setClickedChildren((clickedChildren) => {
+        let clickedChildrenArray = new Array(resultData.length).fill(false);
+        clickedChildrenArray[props.index] = true;
+        return clickedChildrenArray;
+      });
     } catch (err) {
-      setRequestError(err.message);
+      // Request fail
       window.alert(err.message);
     }
   });
@@ -35,25 +49,36 @@ export const Node = (props) => {
   const calcPosition = (level, nodesInLevel, currNode) => {
     if (!currNodeChildren) return;
 
-    let r = (level + 1) * 8;
+    // Arc level radius
+    let r = (level + 1) * 7;
+
+    // The quantity of nodes in the current level
     let n = nodesInLevel;
+
+    // The current node index
     let i = currNode;
+
+    // The current node angle
     let a = (Math.PI / 2 / (n + 1)) * i;
 
+    // Calculate the current node position on the arc
     let x = Math.abs(r * Math.cos(a));
     let y = Math.abs(r * Math.sin(a));
     console.log("pos: a=", a, "r=", r, "n=", n, "i=", i);
 
+    // Translate the node to the calculated position on the arc
     let style = "translate(" + x + "vw, " + y + "vw)";
+
     return style;
   };
 
+  // Set the current node level according to the path's "/" char
   const level = currNodeLabel.split("/").length;
   console.log(currNodeLabel);
 
+  // Set the current node level according to the path's "/" char
   const nodesInLevel = props.siblings.length;
   console.log(props.siblings.length);
-  // const nodesInLevel = currNodeChildren.length;
 
   const currNode = props.index;
   return (
@@ -73,7 +98,7 @@ export const Node = (props) => {
       >
         {level}
       </button>
-      {click && (
+      {click && props.clickedChildren[props.index] && (
         <ul className="nodes">
           {currNodeChildren.children &&
             currNodeChildren.children.map((nodeChild, index) => (
@@ -83,6 +108,8 @@ export const Node = (props) => {
                 type={nodeChild.type}
                 label={currNodeLabel + "/" + nodeChild.label.toString()}
                 siblings={currNodeChildren.children}
+                clickedChildren={clickedChildren}
+                setClickedChildren={setClickedChildren}
               ></Node>
             ))}
         </ul>

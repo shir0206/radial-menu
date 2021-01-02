@@ -6,6 +6,8 @@ import { Node } from "./components/Node";
 import { Gallery } from "./components/Gallery";
 
 function App() {
+  const [clickedChildren, setClickedChildren] = useState([]);
+
   const arr = [];
   return (
     <div className="App">
@@ -15,6 +17,8 @@ function App() {
           label={"root"}
           type={"0"}
           siblings={arr}
+          clickedChildren={clickedChildren}
+          setClickedChildren={setClickedChildren}
         ></Node>
       </ul>
       <Gallery></Gallery>
