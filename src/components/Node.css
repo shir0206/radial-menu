@@ -1,0 +1,15 @@
+.folder {
+  background-color: rgb(194, 194, 194);
+}
+.clicked-folder {
+  background-color: rgb(100, 100, 100);
+}
+.picture {
+  background-color: rgb(112, 156, 253);
+}
+
+button {
+  width: 500px;
+  height: 80px;
+  /* border-radius: 50%; */
+}
