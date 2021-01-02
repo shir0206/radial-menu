@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/radial-menu/static/css/main.d1db28a2.chunk.css",
-    "main.js": "/radial-menu/static/js/main.af9be5bd.chunk.js",
-    "main.js.map": "/radial-menu/static/js/main.af9be5bd.chunk.js.map",
+    "main.css": "/radial-menu/static/css/main.d9f249dc.chunk.css",
+    "main.js": "/radial-menu/static/js/main.2f5078c3.chunk.js",
+    "main.js.map": "/radial-menu/static/js/main.2f5078c3.chunk.js.map",
     "runtime-main.js": "/radial-menu/static/js/runtime-main.5fa2ebc7.js",
     "runtime-main.js.map": "/radial-menu/static/js/runtime-main.5fa2ebc7.js.map",
     "static/js/2.9d31ee98.chunk.js": "/radial-menu/static/js/2.9d31ee98.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.3e33581e.chunk.js": "/radial-menu/static/js/3.3e33581e.chunk.js",
     "static/js/3.3e33581e.chunk.js.map": "/radial-menu/static/js/3.3e33581e.chunk.js.map",
     "index.html": "/radial-menu/index.html",
-    "static/css/main.d1db28a2.chunk.css.map": "/radial-menu/static/css/main.d1db28a2.chunk.css.map",
+    "static/css/main.d9f249dc.chunk.css.map": "/radial-menu/static/css/main.d9f249dc.chunk.css.map",
     "static/js/2.9d31ee98.chunk.js.LICENSE.txt": "/radial-menu/static/js/2.9d31ee98.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5fa2ebc7.js",
     "static/js/2.9d31ee98.chunk.js",
-    "static/css/main.d1db28a2.chunk.css",
-    "static/js/main.af9be5bd.chunk.js"
+    "static/css/main.d9f249dc.chunk.css",
+    "static/js/main.2f5078c3.chunk.js"
   ]
 }
