@@ -33,16 +33,17 @@ export const Node = (props) => {
   });
 
   const calcPosition = (level, nodesInLevel, currNode) => {
-    let r = (level + 1) * 10;
+    if (!currNodeChildren) return;
+
+    let r = (level + 1) * 8;
     let n = nodesInLevel;
     let i = currNode;
-    console.log(level);
-    let a = (90 / (n + 1)) * i;
-    // let a = 270 + (90 / (n + 1)) * i;
-    // let a = 180 + (90 / (n + 1)) * i;
+    let a = (Math.PI / 2 / (n + 1)) * i;
 
-    let x = Math.abs(r * Math.sin(a));
-    let y = Math.abs(r * Math.cos(a));
+    let x = Math.abs(r * Math.cos(a));
+    let y = Math.abs(r * Math.sin(a));
+    console.log("pos: a=", a, "r=", r, "n=", n, "i=", i);
+
     let style = "translate(" + x + "vw, " + y + "vw)";
     return style;
   };
@@ -50,13 +51,22 @@ export const Node = (props) => {
   const level = currNodeLabel.split("/").length;
   console.log(currNodeLabel);
 
-  const nodesInLevel = currNodeChildren.length;
+  const nodesInLevel = props.siblings.length;
+  console.log(props.siblings.length);
+  // const nodesInLevel = currNodeChildren.length;
+
   const currNode = props.index;
   return (
     <>
       <button
         className={
-          props.type === 0 ? (click ? "clicked-folder" : "folder") : "picture"
+          props.label === "root"
+            ? "root"
+            : props.type === 0
+            ? click
+              ? "clicked-folder"
+              : "folder"
+            : "picture"
         }
         style={{ transform: calcPosition(level, nodesInLevel, currNode) }}
         onClick={getData}
@@ -70,8 +80,9 @@ export const Node = (props) => {
               <Node
                 key={nodeChild.label}
                 index={index}
-                label={currNodeLabel + "/" + nodeChild.label.toString()}
                 type={nodeChild.type}
+                label={currNodeLabel + "/" + nodeChild.label.toString()}
+                siblings={currNodeChildren.children}
               ></Node>
             ))}
         </ul>

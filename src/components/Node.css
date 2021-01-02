@@ -1,3 +1,9 @@
+.root {
+  background-color: rgb(194, 194, 194);
+  width: max(6vw, 6vh);
+  height: max(6vw, 6vh);
+}
+
 .folder {
   background-color: rgb(194, 194, 194);
 }
@@ -9,11 +15,11 @@
 }
 
 button {
-  width: max(3.5vw, 3.5vh);
-  height: max(3.5vw, 3.5vh);
+  width: max(3vw, 3vh);
+  height: max(3vw, 3vh);
   border-radius: 50%;
   float: left;
   position: absolute;
-  top: 100px;
-  left: 100px;
+  top: max(1vw, 1vh);
+  left: max(1vw, 1vh);
 }
