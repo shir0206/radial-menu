@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import "./Gallery.css";
+import React from "react";
 import { PrimaryImage } from "./PrimaryImage";
 import { SecondaryImageList } from "./SecondaryImageList";
 

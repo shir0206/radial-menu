@@ -1,5 +1,17 @@
 .primary-img {
-  width: 50vw;
   height: 100%;
   border-radius: 12px;
 }
+
+@media only screen and (min-width: 768px) {
+  .primary-img {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 1px) {
+  .primary-img {
+    width: 75vw;
+  }
+}
+

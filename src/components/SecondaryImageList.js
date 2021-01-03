@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./Gallery.css";
+import React from "react";
+import "./SecondaryImageList.css";
 import { SecondaryImage } from "./SecondaryImage";
 
 export const SecondaryImageList = (props) => {
