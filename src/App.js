@@ -15,7 +15,6 @@ function App() {
         <Node
           className={"root"}
           index={0}
-
           label={"root"}
           type={"0"}
           siblings={arr}

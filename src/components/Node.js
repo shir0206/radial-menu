@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import { useWindowDimensions } from "../hooks/useWindowDimensions";
 
 import "./Node.css";
 
@@ -44,12 +45,15 @@ export const Node = (props) => {
     }
   });
 
+  const { height, width } = useWindowDimensions();
+
   const calcPosition = (level, nodesInLevel, currNode) => {
     if (props.label === "root") return;
     if (!currNodeChildren) return;
 
     // Arc level radius
-    let r = (level + 1) * 7;
+    const radiusWeight = width < 600 ? 7 : 4;
+    let r = (level + 1) * radiusWeight;
 
     // The quantity of nodes in the current level
     let n = nodesInLevel;

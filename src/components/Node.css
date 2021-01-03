@@ -15,11 +15,13 @@
 }
 
 button {
-  width: max(3vw, 3vh);
-  height: max(3vw, 3vh);
+  width: max(1.5vw, 1.5vh);
+  height: max(1.5vw, 1.5vh);
   border-radius: 50%;
   float: left;
   position: absolute;
   top: max(1vw, 1vh);
   left: max(1vw, 1vh);
+  padding: 0;
+  font-size: max(1vw, 1vh);
 }
