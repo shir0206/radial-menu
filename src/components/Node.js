@@ -4,7 +4,6 @@ import axios from "axios";
 import "./Node.css";
 
 export const Node = (props) => {
-  const [click, setClick] = useState(false);
   const [clickedChildren, setClickedChildren] = useState([]);
   const [currNodeType, setCurrNodeType] = useState(props.type);
   const [currNodeLabel, setCurrNodeLabel] = useState(props.label);
@@ -27,9 +26,6 @@ export const Node = (props) => {
       const resultData = result.data.data;
       setCurrNodeChildren(resultData);
       console.log(resultData);
-
-      // Update that the current node is clicked
-      setClick(true);
 
       // Update the parent's "clicks" array:
       // Turn on the flag that the current node is clicked
@@ -107,7 +103,7 @@ export const Node = (props) => {
       >
         {level}
       </button>
-      {click && props.clickedChildren[props.index] && (
+      {props.clickedChildren[props.index] && (
         <ul className="nodes">
           {currNodeChildren.children &&
             currNodeChildren.children.map((nodeChild, index) => (
