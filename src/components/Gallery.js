@@ -6,7 +6,10 @@ import { SecondaryImage } from "./SecondaryImage";
 export const Gallery = (props) => {
   return (
     <>
-      <PrimaryImage primary={props.primary}></PrimaryImage>
+      <PrimaryImage
+        primary={props.primary}
+        setGalleryError={props.setGalleryError}
+      ></PrimaryImage>
       {props.secondary && (
         <>
           <h4>The Gallery:</h4>

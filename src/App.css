@@ -45,6 +45,7 @@ ul {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 0px;
+  margin-block-start: revert;
 }
 
 @media only screen and (min-width: 1024px) {

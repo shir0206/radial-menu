@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { Gallery } from "./Gallery";
+import { Icon } from "../icons/Icon";
 
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
 
@@ -128,7 +128,7 @@ export const Node = (props) => {
         style={{ transform: calcPosition(level, nodesInLevel, currNode) }}
         onClick={getData}
       >
-        {level}
+        <Icon></Icon>
       </button>
       {props.clickedChildren[props.index] && (
         <ul className="nodes">

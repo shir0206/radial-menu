@@ -4,10 +4,7 @@ export const Icon = (props) => {
   return (
     <svg
       id="Capa_1"
-      enable-background="new 0 0 512 512"
-      height="512"
-      viewBox="0 0 512 512"
-      width="512"
+      viewBox="-150 -150 800 800"
       xmlns="http://www.w3.org/2000/svg"
     >
       <g id="XMLID_195_">

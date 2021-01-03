@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Node } from "./components/Node";
 import { Gallery } from "./components/Gallery";
 
@@ -8,8 +8,16 @@ function App() {
   const [clickedChildren, setClickedChildren] = useState([false]);
   const [primary, setPrimary] = useState(null);
   const [secondary, setSecondary] = useState([]);
+  const [galleryError, setGalleryError] = useState(false);
 
   const arr = [];
+
+  useEffect(() => {
+    if (!galleryError) {
+      setGalleryError(true);
+    }
+  }, [galleryError]);
+
   return (
     <div className="App">
       <ul className="nodes-cont">
@@ -31,6 +39,7 @@ function App() {
           secondary={secondary}
           setPrimary={setPrimary}
           setSecondary={setSecondary}
+          setGalleryError={setGalleryError}
         ></Gallery>
       )}
     </div>
