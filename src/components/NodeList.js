@@ -18,6 +18,8 @@ export const NodeList = (props) => {
         setClickedChildren={setClickedChildren}
         setPrimary={props.setPrimary}
         setSecondary={props.setSecondary}
+        galleryError={props.galleryError}
+        setGalleryError={props.setGalleryError}
       ></Node>
     </ul>
   );

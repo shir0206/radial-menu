@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NodeList } from "./components/NodeList";
 import { Gallery } from "./components/Gallery";
 
@@ -9,15 +9,15 @@ function App() {
   const [secondary, setSecondary] = useState([]);
   const [galleryError, setGalleryError] = useState(false);
 
-  useEffect(() => {
-    if (!galleryError) {
-      setGalleryError(true);
-    }
-  }, [galleryError]);
-
   return (
     <div className="App">
-      <NodeList setPrimary={setPrimary} setSecondary={setSecondary}></NodeList>
+      <NodeList
+        setPrimary={setPrimary}
+        setSecondary={setSecondary}
+        galleryError={galleryError}
+        setGalleryError={setGalleryError}
+      ></NodeList>
+
       {primary && (
         <Gallery
           primary={primary}
@@ -25,6 +25,7 @@ function App() {
           setPrimary={setPrimary}
           setSecondary={setSecondary}
           setGalleryError={setGalleryError}
+          galleryError={galleryError}
         ></Gallery>
       )}
     </div>

@@ -3,7 +3,11 @@ import "./PrimaryImage.css";
 
 export const PrimaryImage = (props) => {
   function handleError() {
-    props.setGalleryError(true);
+    if (!props.galleryError) {
+      props.setPrimary(null);
+      props.setSecondary(null);
+      props.setGalleryError(true);
+    }
   }
   return (
     <>

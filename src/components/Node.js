@@ -15,6 +15,12 @@ export const Node = (props) => {
   const receiptUrl = props.label ? baseUrl + "/" + props.label : baseUrl;
   const clientToken = "2d4e69f4823176197ccf41caa5ee6456";
 
+  useEffect(() => {
+    if (props.galleryError) {
+      props.setGalleryError(false);
+    }
+  }, [props.galleryError]);
+
   const getData = useCallback(async () => {
     try {
       // Get result from server
@@ -125,7 +131,7 @@ export const Node = (props) => {
       >
         <Icon></Icon>
       </button>
-      {props.clickedChildren[props.index] && (
+      {props.clickedChildren[props.index] && !props.galleryError && (
         <ul className="nodes">
           {currNodeChildren.children &&
             currNodeChildren.children.map((nodeChild, index) => (
@@ -139,6 +145,8 @@ export const Node = (props) => {
                 setClickedChildren={setClickedChildren}
                 setPrimary={props.setPrimary}
                 setSecondary={props.setSecondary}
+                galleryError={props.galleryError}
+                setGalleryError={props.setGalleryError}
               ></Node>
             ))}
         </ul>
