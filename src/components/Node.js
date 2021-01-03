@@ -100,19 +100,12 @@ export const Node = (props) => {
 
   // Set the current node level according to the path's "/" char
   const level = currNodeLabel.split("/").length;
-  // console.log(currNodeLabel);
 
   // Set the current node level according to the path's "/" char
   const nodesInLevel = props.siblings.length;
-  // console.log(props.siblings.length);
 
   const currNode = props.index;
 
-  // console.log(
-  //   "props.clickedChildren[props.index]",
-  //   props.index,
-  //   props.clickedChildrenArray
-  // );
   return (
     <>
       <button

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Gallery.css";
 import { PrimaryImage } from "./PrimaryImage";
-import { SecondaryImage } from "./SecondaryImage";
+import { SecondaryImageList } from "./SecondaryImageList";
 
 export const Gallery = (props) => {
   return (
@@ -11,25 +11,12 @@ export const Gallery = (props) => {
         setGalleryError={props.setGalleryError}
       ></PrimaryImage>
       {props.secondary && (
-        <>
-          <h4>The Gallery:</h4>
-          <div className="gallery-cont">
-            <div className="secondary-cont">
-              <ul id="gallery" className="gallery">
-                {props.secondary.map((secondaryImg) => (
-                  <SecondaryImage
-                    key={secondaryImg.label}
-                    secondaryImg={secondaryImg}
-                    secondary={props.secondary}
-                    primary={props.primary}
-                    setPrimary={props.setPrimary}
-                    setSecondary={props.setSecondary}
-                  />
-                ))}
-              </ul>
-            </div>
-          </div>
-        </>
+        <SecondaryImageList
+          primary={props.primary}
+          secondary={props.secondary}
+          setPrimary={props.setPrimary}
+          setSecondary={props.setSecondary}
+        ></SecondaryImageList>
       )}
     </>
   );
