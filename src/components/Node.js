@@ -36,7 +36,9 @@ export const Node = (props) => {
       // Turn off the flags for all the other siblings.
       // Such that if the sibling's menu was open it would close.
       props.setClickedChildren((clickedChildren) => {
-        let clickedChildrenArray = new Array(resultData.length).fill(false);
+        let clickedChildrenArray = new Array(clickedChildren.length).fill(
+          false
+        );
         clickedChildrenArray[props.index] = true;
         return clickedChildrenArray;
       });
@@ -47,6 +49,7 @@ export const Node = (props) => {
   });
 
   const calcPosition = (level, nodesInLevel, currNode) => {
+    if (props.label === "root") return;
     if (!currNodeChildren) return;
 
     // Arc level radius
@@ -81,6 +84,12 @@ export const Node = (props) => {
   console.log(props.siblings.length);
 
   const currNode = props.index;
+
+  console.log(
+    "props.clickedChildren[props.index]",
+    props.index,
+    props.clickedChildrenArray
+  );
   return (
     <>
       <button
@@ -88,7 +97,7 @@ export const Node = (props) => {
           props.label === "root"
             ? "root"
             : props.type === 0
-            ? click
+            ? props.clickedChildren[props.index]
               ? "clicked-folder"
               : "folder"
             : "picture"
