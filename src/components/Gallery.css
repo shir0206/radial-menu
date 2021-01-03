@@ -1,0 +1,34 @@
+.primary-img {
+  width: 80px;
+  height: 80px;
+}
+.gallery-cont {
+  margin: 1.5em;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 1024px) {
+  .gallery-cont {
+    column-count: 4;
+  }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .gallery-cont {
+    column-count: 3;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 1px) {
+  .gallery-cont {
+    column-count: 3;
+  }
+}

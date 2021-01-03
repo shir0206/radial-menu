@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import "./Gallery.css";
+import { Primary } from "./Primary";
+import { Secondary } from "./Secondary";
 
 export const Gallery = (props) => {
   return (
     <>
-      <div
-        className={props.type}
-        onClick={() => {
-          if (props.type === 0) return;
-          if (props.type === 1) return;
-        }}
-      ></div>
+      <Primary primary={props.primary}></Primary>
+      <h4>The Gallery:</h4>
+      <div className="gallery-cont">
+        <div className="secondary-cont">
+          <ul id="gallery" className="gallery">
+            {props.secondary.map((secondaryImg) => (
+              <Secondary key={secondaryImg.label} secondary={secondaryImg} />
+            ))}
+          </ul>
+        </div>
+      </div>
     </>
   );
 };

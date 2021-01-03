@@ -1,0 +1,8 @@
+.secondary-img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+  object-fit: cover;
+  height: 20vh;
+  margin-bottom: 1.5em;
+}

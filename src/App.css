@@ -46,3 +46,21 @@ ul {
   margin-inline-end: 0px;
   padding-inline-start: 0px;
 }
+
+@media only screen and (min-width: 1024px) {
+  .nodes-cont {
+    height: 60vh;
+  }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .nodes-cont {
+    height: 50vh;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 1px) {
+  .nodes-cont {
+    height: 40vh;
+  }
+}

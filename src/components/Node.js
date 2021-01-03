@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import { Gallery } from "./Gallery";
+
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
 
 import "./Node.css";
 
 export const Node = (props) => {
   const [clickedChildren, setClickedChildren] = useState([]);
-  const [currNodeType, setCurrNodeType] = useState(props.type);
   const [currNodeLabel, setCurrNodeLabel] = useState(props.label);
   const [currNodeChildren, setCurrNodeChildren] = useState([]);
 
@@ -21,7 +22,6 @@ export const Node = (props) => {
         json: true,
         headers: { "X-TOKEN": clientToken },
       });
-      console.log("inside try");
 
       // Get next children nodes to the state
       const resultData = result.data.data;
@@ -39,6 +39,30 @@ export const Node = (props) => {
         clickedChildrenArray[props.index] = true;
         return clickedChildrenArray;
       });
+
+      // Init gallery
+      if (resultData.type === 1) {
+        // Set the current clicked picture node as primary image
+        const primaryImage = { label: resultData.label, url: resultData.url };
+        props.setPrimary(primaryImage);
+
+        // Set the siblings of the current clicked picture node as secondary images
+        let scondaryImages = [];
+        props.siblings
+          .filter((child) => child.type == 1 && child.label != resultData.label)
+          .map((filteredImage) => {
+            let secondaryImage = {
+              label: filteredImage.label,
+              url: filteredImage.url,
+            };
+            scondaryImages.push(secondaryImage);
+          });
+        props.setSecondary(scondaryImages);
+      } else {
+        props.setPrimary(null);
+
+        props.setSecondary([]);
+      }
     } catch (err) {
       // Request fail
       window.alert(err.message);
@@ -67,7 +91,6 @@ export const Node = (props) => {
     // Calculate the current node position on the arc
     let x = Math.abs(r * Math.cos(a));
     let y = Math.abs(r * Math.sin(a));
-    console.log("pos: a=", a, "r=", r, "n=", n, "i=", i);
 
     // Translate the node to the calculated position on the arc
     let style = "translate(" + x + "vw, " + y + "vw)";
@@ -77,19 +100,19 @@ export const Node = (props) => {
 
   // Set the current node level according to the path's "/" char
   const level = currNodeLabel.split("/").length;
-  console.log(currNodeLabel);
+  // console.log(currNodeLabel);
 
   // Set the current node level according to the path's "/" char
   const nodesInLevel = props.siblings.length;
-  console.log(props.siblings.length);
+  // console.log(props.siblings.length);
 
   const currNode = props.index;
 
-  console.log(
-    "props.clickedChildren[props.index]",
-    props.index,
-    props.clickedChildrenArray
-  );
+  // console.log(
+  //   "props.clickedChildren[props.index]",
+  //   props.index,
+  //   props.clickedChildrenArray
+  // );
   return (
     <>
       <button
@@ -119,6 +142,8 @@ export const Node = (props) => {
                 siblings={currNodeChildren.children}
                 clickedChildren={clickedChildren}
                 setClickedChildren={setClickedChildren}
+                setPrimary={props.setPrimary}
+                setSecondary={props.setSecondary}
               ></Node>
             ))}
         </ul>
