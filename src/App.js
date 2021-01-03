@@ -29,7 +29,14 @@ function App() {
           setSecondary={setSecondary}
         ></Node>
       </ul>
-      <Gallery primary={primary} secondary={secondary}></Gallery>
+      {primary && (
+        <Gallery
+          primary={primary}
+          secondary={secondary}
+          setPrimary={setPrimary}
+          setSecondary={setSecondary}
+        ></Gallery>
+      )}
     </div>
   );
 }
