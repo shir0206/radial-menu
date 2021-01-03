@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Node } from "./Node";
+import "./NodeList.css";
 
 export const NodeList = (props) => {
   const [clickedChildren, setClickedChildren] = useState([false]);

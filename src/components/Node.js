@@ -116,6 +116,8 @@ export const Node = (props) => {
             ? props.clickedChildren[props.index]
               ? "clicked-folder"
               : "folder"
+            : props.clickedChildren[props.index]
+            ? "clicked-picture"
             : "picture"
         }
         style={{ transform: calcPosition(level, nodesInLevel, currNode) }}
