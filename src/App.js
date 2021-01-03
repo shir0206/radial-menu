@@ -1,16 +1,13 @@
 import "./App.css";
 
 import { useEffect, useState } from "react";
-import { Node } from "./components/Node";
+import { NodeList } from "./components/NodeList";
 import { Gallery } from "./components/Gallery";
 
 function App() {
-  const [clickedChildren, setClickedChildren] = useState([false]);
   const [primary, setPrimary] = useState(null);
   const [secondary, setSecondary] = useState([]);
   const [galleryError, setGalleryError] = useState(false);
-
-  const arr = [];
 
   useEffect(() => {
     if (!galleryError) {
@@ -20,19 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <ul className="nodes-cont">
-        <Node
-          className={"root"}
-          index={0}
-          label={"root"}
-          type={"0"}
-          siblings={arr}
-          clickedChildren={clickedChildren}
-          setClickedChildren={setClickedChildren}
-          setPrimary={setPrimary}
-          setSecondary={setSecondary}
-        ></Node>
-      </ul>
+      <NodeList setPrimary={setPrimary} setSecondary={setSecondary}></NodeList>
       {primary && (
         <Gallery
           primary={primary}
