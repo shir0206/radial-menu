@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Secondary.css";
+import "./SecondaryImage.css";
 
-export const Secondary = (props) => {
-  function handleClickOnSecondare() {
+export const SecondaryImage = (props) => {
+  function handleClickOnSecondaryImage() {
     const primaryPrev = props.primary;
 
     const primaryNew = {
@@ -31,7 +31,7 @@ export const Secondary = (props) => {
             className="secondary-img"
             src={props.secondaryImg.url}
             alt={props.secondaryImg.label}
-            onClick={handleClickOnSecondare}
+            onClick={handleClickOnSecondaryImage}
           ></img>
         </div>
       )}

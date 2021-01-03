@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Primary.css";
+import "./PrimaryImage.css";
 
-export const Primary = (props) => {
+export const PrimaryImage = (props) => {
   return (
     <>
       {props.primary && (

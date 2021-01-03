@@ -25,4 +25,5 @@ button {
   padding: 0;
   font-size: max(1vw, 1vh);
   outline: none;
+  cursor: pointer;
 }

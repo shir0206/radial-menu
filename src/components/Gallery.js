@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./Gallery.css";
-import { Primary } from "./Primary";
-import { Secondary } from "./Secondary";
+import { PrimaryImage } from "./PrimaryImage";
+import { SecondaryImage } from "./SecondaryImage";
 
 export const Gallery = (props) => {
   return (
     <>
-      <Primary primary={props.primary}></Primary>
+      <PrimaryImage primary={props.primary}></PrimaryImage>
       {props.secondary && (
         <>
           <h4>The Gallery:</h4>
@@ -14,7 +14,7 @@ export const Gallery = (props) => {
             <div className="secondary-cont">
               <ul id="gallery" className="gallery">
                 {props.secondary.map((secondaryImg) => (
-                  <Secondary
+                  <SecondaryImage
                     key={secondaryImg.label}
                     secondaryImg={secondaryImg}
                     secondary={props.secondary}

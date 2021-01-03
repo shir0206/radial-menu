@@ -5,4 +5,5 @@
   object-fit: cover;
   height: 20vh;
   margin-bottom: 1.5em;
+  cursor: pointer;
 }
