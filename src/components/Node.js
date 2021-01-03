@@ -32,7 +32,6 @@ export const Node = (props) => {
       // Get next children nodes to the state
       const resultData = result.data.data;
       setCurrNodeChildren(resultData);
-      console.log(resultData);
 
       // Update the parent's "clicks" array:
       // Turn on the flag that the current node is clicked
