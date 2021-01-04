@@ -156,7 +156,7 @@ button {
     if (!currNodeChildren) return;
 
     // Arc level radius
-    const radiusWeight = width < 600 ? 7 : 4; // The width is recieved from a custom hook that checks the size of the screen
+    const radiusWeight = width < 600 ? 7 : 4; // The width is received from a custom hook that checks the size of the screen
     let r = (level + 1) * radiusWeight;
 
     // The quantity of nodes in the current level
