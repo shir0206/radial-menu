@@ -88,10 +88,12 @@ When the result is returned, the current `Node` sets in the parent's flag array 
 ``` javascript
   return (
     <>
+    
       <button
-        // . . .
         onClick={getData}
+        // . . .
       ></button>
+      
       {props.clickedChildren[props.index] && (
         <ul className="nodes">
           {currNodeChildren.children &&
@@ -109,6 +111,7 @@ When the result is returned, the current `Node` sets in the parent's flag array 
             ))}
         </ul>
       )}
+      
     </>
   );
 
@@ -117,6 +120,64 @@ When the result is returned, the current `Node` sets in the parent's flag array 
 
 ### :large_blue_circle: Radial Menu
 
+1. Each button is initiated to an absolute position in the upper left corner of the screen.
+
+```css
+button {
+  position: absolute;
+  top: max(1vw, 1vh);
+  left: max(1vw, 1vh);
+  // . . .
+}
+```
+
+2. The position of the button on the screen is dynamically changing, using the function `calcPosition`.
+``` javascript
+    <button
+      style={{ transform: calcPosition(level, nodesInLevel, currNode) }}
+      // . . .
+    >
+```
+
+3. Trigonometric calculation of the position of the button on the screen:
+
+   1. Parameters:
+      * According to the level of the button in the tree, calculated the radius of the circle.
+      * According to the number of nodes in the level, calculated the number of points that should be in the arc.
+      * The position of the button out of all the level buttons.
+
+   2. Calculation of the angle and position:
+      * According to the input of the function, calculated the angle of the button (relative to the screen).
+      * According to the angle, calculated the position coordinates to which the button should be moved.
+      
+``` javascript
+  const calcPosition = (level, nodesInLevel, currNode) => {
+    if (props.label === "root") return;
+    if (!currNodeChildren) return;
+
+    // Arc level radius
+    const radiusWeight = width < 600 ? 7 : 4; // The width is recieved from a custom hook that checks the size of the screen
+    let r = (level + 1) * radiusWeight;
+
+    // The quantity of nodes in the current level
+    let n = nodesInLevel;
+
+    // The current node index
+    let i = currNode;
+
+    // The current node angle
+    let a = (Math.PI / 2 / (n + 1)) * i;
+
+    // Calculate the current node position on the arc
+    let x = Math.abs(r * Math.cos(a));
+    let y = Math.abs(r * Math.sin(a));
+
+    // Translate the node to the calculated position on the arc
+    let style = "translate(" + x + "vw, " + y + "vw)";
+
+    return style;
+  };
+```
 <hr>
 
 ### :large_blue_circle: Demo
