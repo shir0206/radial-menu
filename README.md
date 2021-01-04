@@ -1,5 +1,5 @@
 # :large_blue_circle: Radial Menu
-<img align="right" src="https://user-images.githubusercontent.com/40990488/103512521-84ba3980-4e71-11eb-872a-b7d0eed4f5d7.png" alt="desktop-view" width="450px">
+<img align="right" src="https://user-images.githubusercontent.com/40990488/103512521-84ba3980-4e71-11eb-872a-b7d0eed4f5d7.png" alt="desktop-view" width="400px">
 
 
 Creating a **recursive radial menu** that retrieves from a **server** the structure of folders & images. 
@@ -15,7 +15,7 @@ The code is written in `React.js`, the data is retrived using `axios`.
 <br><br>
 
 Link: https://shir0206.github.io/radial-menu/
-
+<br><br>
 <hr>
 
 ### :large_blue_circle: Recursive Menu
